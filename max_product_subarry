@@ -1,0 +1,71 @@
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        n = len(nums)
+        max_product = [nums[0]]*n
+        min_product = [nums[0]]*n
+
+        for i in range(1, n):
+            max_product[i] = max(nums[i], max_product[i-1]*nums[i], min_product[i-1]*nums[i])
+            min_product[i] = min(nums[i], max_product[i-1]*nums[i], min_product[i-1]*nums[i])
+
+        return max(max_product)
+
+
+        
+Certainly! Let's walk through the code with the example nums = [2, 3, -2, 4] to understand how it finds the maximum product of a contiguous subarray:
+
+Initialize the length of nums to n = 4.
+
+Initialize two lists, max_product and min_product, with the first element of nums, which is 2.
+
+In the given code, [nums[0]] * n is used to create a list of length n with all elements initialized to the value of nums[0].
+
+Let's break it down using an example:
+
+Suppose we have nums = [2, 3, -2, 4] and n = 4.
+
+The expression [nums[0]] * n will create a list where all elements are copies of nums[0], which is 2 in this case.
+
+So [nums[0]] * n becomes [2] * 4, which evaluates to [2, 2, 2, 2]. The resulting list has a length of n (4) and all elements are equal to 2.
+
+In general, [nums[0]] * n is a concise way to create a list of length n with all elements initialized to the same value as nums[0].
+
+max_product = [2, 2, 2, 2]
+min_product = [2, 2, 2, 2]
+Start iterating through the elements of nums starting from the second element (3) using the range from 1 to n (exclusive).
+
+For i = 1, calculate the maximum and minimum product of contiguous subarrays ending at position i.
+
+max_product[i] = max(3, max_product[0] * 3, min_product[0] * 3) = max(3, 2 * 3, 2 * 3) = 6
+min_product[i] = min(3, max_product[0] * 3, min_product[0] * 3) = min(3, 2 * 3, 2 * 3) = 3
+After the first iteration, the lists become:
+
+max_product = [2, 3, 2, 2]
+min_product = [2, 3, 2, 2]
+For i = 2, calculate the maximum and minimum product of contiguous subarrays ending at position i.
+
+max_product[i] = max(-2, max_product[1] * -2, min_product[1] * -2) = max(-2, 3 * -2, 3 * -2) = -2
+
+min_product[i] = min(-2, max_product[1] * -2, min_product[1] * -2) = min(-2, 3 * -2, 3 * -2) = -6
+
+After the second iteration, the lists become:
+
+max_product = [2, 6, -2, 2]
+min_product = [2, 3, -6, 2]
+For i = 3, calculate the maximum and minimum product of contiguous subarrays ending at position i.
+
+max_product[i] = max(4, max_product[2] * 4, min_product[2] * 4) = max(4, -2 * 4, -6 * 4) = 4
+
+min_product[i] = min(4, max_product[2] * 4, min_product[2] * 4) = min(4, -2 * 4, -6 * 4) = -24
+
+After the third iteration, the lists become:
+
+max_product = [2, 6, -2, 4]
+min_product = [2, 3, -6, -24]
+After iterating through all elements, the maximum product of a contiguous subarray within nums is the maximum value in the max_product list, which is 4 for the given example.
+
+The method returns max(max_product), resulting in an output of 6 for the given example.
+
+By considering both positive and negative numbers and maintaining two separate lists for the maximum and minimum product
+
+
