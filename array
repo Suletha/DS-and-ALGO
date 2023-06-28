@@ -1,0 +1,37 @@
+
+Once upon a time, there was a programmer named Alice who was given a task to create an array called ans based on another given array called nums. The nums array was a zero-based permutation, which means it contained distinct integers starting from 0 to nums.length - 1 (inclusive). The task was to create a new array ans of the same length as nums such that each element ans[i] would contain the value of nums[nums[i]].
+Alice started working on the problem by creating an empty ans array of the same length as nums. She then started iterating through each index i in the nums array. For each index i, she set the value of ans[i] to be equal to nums[nums[i]].
+Alice realized that this process essentially mapped the value at index i of the nums array to the value at index nums[i] of the nums array, and then mapped that value to the corresponding value in ans[i]. In other words, ans[i] was essentially the double mapping of nums[i].
+Alice was happy with her solution and tested it with various input arrays. She found that her code was working perfectly fine, and she submitted the solution to her supervisor.
+
+
+Test Case 1:
+Input:
+nums = [2,0,1,3]
+Output:
+[1,2,0,3]
+
+Explanation:
+
+For index 0, ans[0] = nums[nums[0]] = nums[2] = 1
+
+For index 1, ans[1] = nums[nums[1]] = nums[0] = 2
+
+For index 2, ans[2] = nums[nums[2]] = nums[1] = 0
+
+For index 3, ans[3] = nums[nums[3]] = nums[3] = 3
+
+Therefore, the output is [1,2,0,3].
+
+
+def buildArray(nums):
+    n = len(nums)
+    ans = [0] * n
+
+    for i in range(n):
+        ans[i] = nums[nums[i]]
+
+    return ans
+
+    
+    
