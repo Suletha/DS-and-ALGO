@@ -1,0 +1,83 @@
+1.ADDITION
+
+A = [[1, 2],[3, 4]]
+
+B = [[5, 6],[7, 8]]
+
+c=[[0,0],[0,0]]
+for i in range(len(A)):
+    for j in range(len(A[0])):
+        
+        c[i][j]=A[i][j]+B[i][j]
+for row in c:
+    print(row)
+
+OUTPUT:
+
+
+2.SUBTRACTION
+
+A = [[1, 2],[3, 4]]
+
+B = [[5, 6],[7, 8]]
+
+c=[[0,0],[0,0]]
+for i in range(len(A)):
+    for j in range(len(A[0])):
+        
+        c[i][j]=A[i][j]-B[i][j]
+for row in c:
+    print(row)
+
+3.MULTIPLICATION:
+A = [[1, 2],[3, 4]]
+
+B = [[5, 6],[7, 8]]
+
+c=[[0,0],[0,0]]
+for i in range(len(A)):
+    for j in range(len(B[0])):
+        for k in range(len(B)):
+            c[i][j] += A[i][k]*B[k][j]
+       
+for row in c:
+    print(row)
+
+4.TRANSPOSE:
+A = [
+    [1, 2, 3],
+    [4, 5, 6]
+]
+
+transpose = [[0, 0], [0, 0], [0, 0]]  # Initialize an empty matrix
+
+for i in range(len(A)):
+    for j in range(len(A[0])):
+        transpose[j][i] = A[i][j]
+
+print("Transpose:")
+for row in transpose:
+    print(row)
+# Output:
+# [1, 4]
+# [2, 5]
+# [3, 6]
+
+# Scalar Multiplication
+A = [
+    [1, 2],
+    [3, 4]
+]
+
+scalar = 2
+
+for i in range(len(A)):
+    for j in range(len(A[0])):
+        A[i][j] *= scalar
+
+print("Scalar Multiplication:")
+for row in A:
+    print(row)
+# Output:
+# [2, 4]
+# [6, 8]
