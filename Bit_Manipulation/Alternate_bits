@@ -1,0 +1,19 @@
+Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values.
+
+ Input: n = 5
+Output: true
+Explanation: The binary representation of 5 is: 101
+
+Input: n = 7
+Output: false
+Explanation: The binary representation of 7 is: 111.
+
+
+
+class Solution:
+    def hasAlternatingBits(self, n: int) -> bool:
+        alt_bit=n^(n>>1)
+        if((alt_bit + 1) & (alt_bit)== 0):
+            return True
+        else:
+            return False
