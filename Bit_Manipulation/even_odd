@@ -1,0 +1,7 @@
+def even_odd(n):
+    if (n & 1) == 1:
+        return odd
+        #print("odd")
+    else:
+        return even
+        #print("even")
