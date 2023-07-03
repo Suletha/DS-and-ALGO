@@ -1,0 +1,14 @@
+Given A String check whether on reversal it is the same or not.
+Return True if yes otherwise return False. 
+
+Input:- word = "madam"
+Output : true
+
+Input:- word = "sharpener"
+Output : false
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        rev = s[::-1]
+        return s == rev
+       
