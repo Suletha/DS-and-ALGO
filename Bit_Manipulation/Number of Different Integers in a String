@@ -1,0 +1,16 @@
+class Solution:
+    def numDifferentIntegers(self, word: str) -> int:
+        num=''
+        res=set()
+
+        for i in word:
+            if i.isnumeric():
+                num+=i
+            else:
+                if num!='':
+                    res.add(int(num))
+                num=''
+
+        if num!='':
+            res.add(int(num))
+        return len(res)
