@@ -1,0 +1,15 @@
+In A exam with negative marking the passing criteria is you have to score zero or positive marks .
+we have given an array which denotes the score of the students in that exam .
+you have to move all the failed students to last of the array .
+
+def move_failed_students(arr):
+    passed_students = [score for score in arr if score >= 0]
+    failed_students = [score for score in arr if score < 0]
+    return passed_students + failed_students
+
+# Example usage
+arr = [1, -2, 3, -4, 5, -6]
+result = move_failed_students(arr)
+print(result)
+
+[1, 3, 5, -2, -4, -6]
