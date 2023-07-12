@@ -1,0 +1,34 @@
+You have given a string , You have to add characters at start of string to make it a palindrome .
+return the minimum number of characters required to add to make it a palindrome.
+
+Example 1:
+Input:
+str = "abcd"
+Output: 3
+Explanation: Inserted character marked with bold characters in dcbabcd
+Example 2:
+Input:
+str = "aa"
+Output: 0
+Explanation:"aa" is already a palindrome.
+
+
+
+class Solution:
+    def minimum_count(self, s: str) -> int:
+        n = len(s)
+        start = 0
+        end = n - 1
+        res = 0
+        while start < end:  # While the pointers have not met in the middle of the string
+            if s[start] == s[end]:  # If the characters at the start and end pointers are equal
+                start += 1  # Move the start pointer to the right
+                end -= 1  # Move the end pointer to the left
+            else:
+                res += 1  # Increment the count of characters to be added
+                start = 0  # Reset the start pointer to the beginning of the string
+                end = n - res - 1  # Reset the end pointer to the end of the string with a reduced number of characters
+        return res  # Return the count of characters to be added
+ 
+
+
