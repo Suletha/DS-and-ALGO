@@ -1,0 +1,56 @@
+row = 7
+asciiNumber = 65
+m = (row * 2) -2
+for i in range(0,row):
+    for j in range(0,m):
+        print(end=" ")
+    m = m - 1
+    for j in range(0,i+1):
+        charecter = chr(asciiNumber)
+        print(charecter,end=" ")
+        asciiNumber +=1
+    print(" ")
+
+
+
+
+            A  
+           B C  
+          D E F  
+         G H I J  
+        K L M N O  
+       P Q R S T U  
+      V W X Y Z [ \  
+
+
+
+
+        Sure! Let's break down each line of the code:
+
+print("Print equilateral triangle Pyramid with characters "): This line prints a string that serves as a title or description for the subsequent pattern that will be printed.
+
+size = 7: This line assigns the value 7 to the variable size, which represents the number of rows in the equilateral triangle pyramid pattern.
+
+asciiNumber = 65: This line assigns the ASCII value 65 to the variable asciiNumber. This value corresponds to the letter 'A' in the ASCII table. It will be used to generate the characters to be printed in the pattern.
+
+m = (2 * size) - 2: This line calculates the value of m, which represents the number of spaces to be printed before each row of characters. The formula used here is (2 * size) - 2, which is a common pattern to create a pyramid shape.
+
+for i in range(0, size):: This line starts a loop that iterates over the range from 0 to size - 1. This loop controls the number of rows in the pattern.
+
+for j in range(0, m):: This line starts a nested loop that iterates over the range from 0 to m - 1. This loop is responsible for printing the required number of spaces before each row of characters.
+
+print(end=" "): This line prints a single space character without a newline character, effectively creating spaces in the output.
+
+m = m - 1: This line decrements the value of m by 1 after each row, as we move to the next row, we need to decrease the number of spaces to be printed.
+
+for j in range(0, i + 1):: This line starts another nested loop that iterates over the range from 0 to i. This loop is responsible for printing the characters in each row.
+
+character = chr(asciiNumber): This line converts the current value of asciiNumber into its corresponding character using the chr() function and assigns it to the variable character. This will be the character printed in the current position.
+
+print(character, end=' '): This line prints the character followed by a space character without a newline character, effectively creating spaces between the characters in the output.
+
+asciiNumber += 1: This line increments the value of asciiNumber by 1 after each character is printed, so that the next character in the ASCII sequence will be printed in the next iteration.
+
+print(" "): This line prints a newline character, moving the output to the next line after printing all the characters in the current row.
+
+By executing these lines in a loop, the code generates a pyramid-shaped pattern with increasing characters in each row, starting from 'A'. The number of rows and the characters printed in each row depend on the value of size
