@@ -1,0 +1,75 @@
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        d = {}
+        for i in s:
+            if i not in d:
+                d[i] = 1
+            else:
+                d[i] += 1
+        for j in t:
+            if j not in d:
+                return False
+            else:
+                if d[j] == 1:
+                    del d[j]
+                elif d[j] > 1:
+                    d[j] -= 1
+        if d == {}:
+            return True
+        else:
+            return False
+Input: s = "anagram", t = "nagaram"
+Output: true
+
+Input: s = "rat", t = "car"
+Output: false
+
+Define a class Solution with a method isAnagram. The method takes two string arguments, s and t, and returns a boolean value indicating whether t is an anagram of s.
+
+Create an empty dictionary d to store the count of each character in string s.
+
+Iterate over each character i in string s.
+
+Inside the loop, check if the character i is already present as a key in the dictionary d.
+
+If it is not present, add i as a key in d and initialize its count as 1.
+If it is already present, increment the count by 1.
+Now, iterate over each character j in string t.
+
+Inside the loop, check if the character j is not present as a key in the dictionary d.
+
+If it is not present, it means j is a character in t that is not present in s. Therefore, t cannot be an anagram of s, so return False.
+If the character j is present in d, decrement its count by 1.
+
+If the count becomes 0, remove the key j from the dictionary d using the del statement.
+If the count is greater than 0, update the value of the key j in d with the new count.
+After iterating through all characters in t, check if the dictionary d is empty.
+
+If it is empty, it means all characters in s have been matched and canceled out by characters in t. Hence, t is an anagram of s, so return True.
+If it is not empty, there are some unmatched characters in s or t, indicating that t is not an anagram of s. Return False.
+In the example case, let's use s = "anagram" and t = "nagaram".
+
+Initialize an empty dictionary d.
+
+Start iterating over characters in s.
+
+At the first iteration, the character is 'a'. It is not present in d, so add it as a key with a count of 1.
+
+Continue iterating through the characters of s, incrementing the count of each character in d.
+
+After processing all characters in s, the dictionary d contains {'a': 3, 'n': 1, 'g': 1, 'r': 1, 'm': 1}.
+
+Start iterating over characters in t.
+
+At the first iteration, the character is 'n'. It is present in d, so decrement its count to 0.
+
+Continue iterating through the characters of t, canceling out matching characters in d by decrementing their counts.
+
+After processing all characters in t, the dictionary d becomes {'a': 2}.
+
+Since d is not empty, return False.
+
+In this case, t is not an anagram of s, and the code correctly returns False.
