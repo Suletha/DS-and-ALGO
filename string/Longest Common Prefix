@@ -1,0 +1,68 @@
+Write a function to find the longest common prefix string amongst an array of strings.
+If there is no common prefix, return an empty string "".
+
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        res = ""
+        for i in range(len(strs[0])):
+            for s in strs:
+                if i == len(s) or s[i] != strs[0][i]:
+                    return res
+            
+            res += strs[0][i]
+        return res
+
+Input: strs = ["flower","flow","flight"]
+Output: "fl"
+
+Input: strs = ["dog","racecar","car"]
+Output: ""
+Explanation: There is no common prefix among the input strings.
+
+
+Suppose we have the input strs = ["flower", "flow", "flight"].
+
+Initialize an empty string res to store the longest common prefix.
+
+Start iterating over the characters in the first string strs[0] using the outer for loop. The variable i represents the index of the current character.
+
+For each character at index i in strs[0], iterate over all strings in the strs list using the inner for loop.
+
+Check two conditions:
+
+If i is equal to the length of the current string s or if the character at index i in s is not equal to the character at index i in strs[0], it means the common prefix ends here. In that case, return the current value of res as the longest common prefix.
+If the conditions above are not met, it means the character at index i is common among all strings so far. Add that character to res.
+After iterating over all strings, the outer for loop moves to the next character at index i+1, and the process is repeated until we reach the end of the first string strs[0].
+
+Finally, return the value of res, which represents the longest common prefix.
+
+Now, let's go through the example step by step:
+
+Initialize res as an empty string.
+
+Start iterating over the characters in the first string, "flower".
+
+At the first iteration, i = 0. Check all strings in strs for the character at index 0.
+
+The character at index 0 is 'f' in all strings, so we continue to the next iteration.
+At the second iteration, i = 1. Check all strings in strs for the character at index 1.
+
+The character at index 1 is 'l' in all strings, so we continue to the next iteration.
+At the third iteration, i = 2. Check all strings in strs for the character at index 2.
+
+The character at index 2 is 'o' in all strings, so we continue to the next iteration.
+At the fourth iteration, i = 3. Check all strings in strs for the character at index 3.
+
+The character at index 3 is 'w' in all strings, so we continue to the next iteration.
+At the fifth iteration, i = 4. Check all strings in strs for the character at index 4.
+
+The character at index 4 is 'e' in all strings, so we continue to the next iteration.
+At the sixth iteration, i = 5. Check all strings in strs for the character at index 5.
+
+The character at index 5 is 'r' in all strings, so we continue to the next iteration.
+At the seventh iteration, i = 6. Check all strings in strs for the character at index 6.
+
+The character at index 6 is present in strs[0] but is missing in the other strings. Therefore, the common prefix ends here.
+Return the current value of res, which is "flow".
+
+In this case, the longest common prefix among the strings "flower", "flow", and "flight" is "flow", and that is the output of the code.
