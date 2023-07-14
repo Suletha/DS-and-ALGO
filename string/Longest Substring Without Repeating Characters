@@ -1,0 +1,57 @@
+Given a string s, find the length of the longest 
+substring
+ without repeating characters.
+
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        char_set = set()
+        l = 0
+        res = 0
+        for r in range(len(s)):
+            while s[r] in char_set:
+                char_set.remove(s[l])
+                l +=1
+            char_set.add(s[r])
+            res = max(res,r - l +1)
+        return res
+
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3.
+
+Suppose we have the input string s = "abcabcbb".
+
+Initialize an empty set called char_set to keep track of unique characters encountered.
+Initialize two pointers, l and r, both pointing to the beginning of the string.
+Initialize a variable res to store the length of the longest substring without repeating characters. Set it to 0 initially.
+Now, let's go through the loop:
+
+At the first iteration, r = 0. Since s[0] = 'a' is not present in char_set, we add it to the set and update res to be the maximum between 0 (previous res value) and r - l + 1 (which is 1 in this case). So, r
+l = 0
+res = 1
+At the second iteration, r = 1. s[1] = 'b' is not in char_set, so we add it to the set. We update res to be the maximum between 1 (previous res value) and r - l + 1 (which is 2 in this case). So, res remains 2.
+
+char_set = {'a', 'b'}
+l = 0
+res = 2
+At the third iteration, r = 2. s[2] = 'c' is not in char_set, so we add it to the set. We update res to be the maximum between 2 (previous res value) and r - l + 1 (which is 3 in this case). So, res becomes 3.
+
+char_set = {'a', 'b', 'c'}
+l = 0
+res = 3
+At the fourth iteration, r = 3. Now, s[3] = 'a' is already present in char_set. We need to remove the characters from the set and update l until we remove the duplicate 'a'.
+
+First, we remove 'a' from the set: char_set = {'b', 'c'}
+Then, we increment l by 1: l = 1
+The duplicate 'a' is removed, and we can continue.
+At the fifth iteration, r = 3 (since r doesn't change after the duplicate character is removed). Now, s[3] = 'a' is not in char_set, so we add it to the set. We update res to be the maximum between 3 (previous res value) and r - l + 1 (which is 3 in this case). So, res remains 3.
+
+char_set = {'b', 'c', 'a'}
+l = 1
+res = 3
+The iterations continue in a similar manner until we reach the end of the string.
+
+Finally, we obtain the value of res, which represents the length of the longest substring without repeating characters. In this case, the value of res is 3, which corresponds to the substring "abc".
+
+Note that the code snippet provided doesn't return the actual substring but only the length. If you want to obtain the substring itself, you can modify the code accordingly.
