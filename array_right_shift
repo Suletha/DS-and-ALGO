@@ -1,0 +1,29 @@
+)arr = [1,2,3,4,5]
+i = len(arr)-1
+temp = arr[i]
+while i > 0:
+    arr[i] = arr[i-1]
+    i=i-1
+arr[0] = temp
+print(arr)
+
+
+arr = [1, 2, 3, 4, 5]: This line initializes a list called arr with the values [1, 2, 3, 4, 5].
+
+i = len(arr) - 1: The variable i is set to the index of the last element in the list. In this case, i will be 4, as the list has 5 elements and Python uses zero-based indexing.
+
+temp = arr[i]: The variable temp is assigned the value of the last element of the list arr. In this case, temp will be 5.
+
+while i > 0:: This initiates a while loop that continues as long as the value of i is greater than 0.
+
+arr[i] = arr[i-1]: Inside the while loop, the value at the current index i is replaced with the value of the element at the previous index (i-1). This effectively shifts all elements one position to the right in the list.
+
+i = i - 1: The variable i is decremented by 1, moving to the next index towards the beginning of the list.
+
+The loop repeats steps 5 and 6 until i becomes 0.
+
+arr[0] = temp: After the while loop completes, the first element of the list (index 0) is assigned the value stored in the variable temp. This means that the original last element (5) is moved to the beginning of the list.
+
+print(arr): The modified list arr is printed. The output will be [5, 1, 2, 3, 4].
+
+In summary, the code shifts all elements in the list one position to the right and moves the original last element to the beginning of the list. This is essentially a right rotation operation on the list.
