@@ -1,0 +1,33 @@
+write the code to print all the subarrays possible. Note - print in the similar way as given here.
+
+Input:-
+
+[1,2,3,4,5]
+
+Output:-
+1
+12
+123
+1234
+12345
+2
+23
+234
+2345
+3
+34
+345
+4
+45
+5
+
+def print_subarray(arr, length):
+    """Function to print all the subarrays given in an array
+    Input arr--> array, length -->length of an array """
+    for i in range(len(arr)):
+        for j in range(i,len(arr)):
+            str1=""
+            for k in range(i,j+1):
+                str1=str1+str(arr[k])
+            print(str1)
+    
