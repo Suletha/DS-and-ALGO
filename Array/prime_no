@@ -1,0 +1,80 @@
+Write a program to store first n prime numbers in an array . After storing return the array.﻿
+Input:-
+
+n=5
+
+Output:- Return the output in the form of an array.
+
+2
+
+3
+
+5
+
+7
+
+11
+
+a = []                           # Initialize an empty list 'a' to store the prime numbers.
+x = 2                            # Start checking for primes from 2.
+
+while (len(a) < 5):              # Continue until we find the first 5 prime numbers.
+
+    flag = True                  # Assume 'x' is prime (flag = True).
+
+    for i in range(2, x-1):       # Iterate over numbers from 2 to (x-1).
+        if x % i == 0:            # If 'x' is divisible by any 'i', it's not prime.
+            flag = False          # Set the flag to False to indicate 'x' is not prime.
+            break                 # Exit the loop early since we already found a divisor.
+
+    if flag == True:              # If the flag is still True, 'x' is a prime number.
+        a.append(x)               # Append 'x' to the list 'a'.
+
+    x = x + 1                     # Increment 'x' to check the next number.
+
+                                   # The while loop continues until 'a' contains the first 5 prime numbers.
+
+print(a)                            # Output the list of the first 5 prime numbers.
+
+
+
+
+
+# Initial values
+a = []   # Empty list to store prime numbers.
+x = 2    # Start checking for primes from 2.
+
+# Iteration 1
+x = 2
+i = (No iteration as the loop doesn't execute)  # Since range(2, 2-1) generates an empty sequence, the for loop doesn't execute.
+flag = True  # Since the loop didn't execute, 'flag' remains True.
+a = [2]   # Since 'flag' is True, we append 'x' (which is 2) to the list 'a'.
+
+# Iteration 2
+x = 3
+i = 2   # The for loop iterates over range(2, 3-1), which is equivalent to range(2, 2) -> [2].
+flag = True  # Since 3 % 2 != 0, 'flag' remains True.
+a = [2, 3]   # Since 'flag' is True, we append 'x' (which is 3) to the list 'a'.
+
+# Iteration 3
+x = 4
+i = 2   # The for loop iterates over range(2, 4-1), which is equivalent to range(2, 3) -> [2].
+flag = False  # Since 4 % 2 == 0, 'flag' becomes False, indicating 4 is not prime.
+a = [2, 3]   # Since 'flag' is False, we do not append 'x' (which is 4) to the list 'a'.
+
+# Iteration 4
+x = 5
+i = 2   # The for loop iterates over range(2, 5-1), which is equivalent to range(2, 4) -> [2, 3].
+flag = True  # Since 5 % 2 != 0 and 5 % 3 != 0, 'flag' remains True.
+a = [2, 3, 5]   # Since 'flag' is True, we append 'x' (which is 5) to the list 'a'.
+
+# Iteration 5
+x = 6
+i = 2   # The for loop iterates over range(2, 6-1), which is equivalent to range(2, 5) -> [2, 3, 4].
+flag = False  # Since 6 % 2 == 0, 'flag' becomes False, indicating 6 is not prime.
+a = [2, 3, 5]   # Since 'flag' is False, we do not append 'x' (which is 6) to the list 'a'.
+
+# The while loop stops here as len(a) (which is 3) is not less than n (which is 5).
+# The final list 'a' contains the first 3 prime numbers: [2, 3, 5]
+
+    
