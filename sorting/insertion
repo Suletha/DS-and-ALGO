@@ -1,0 +1,28 @@
+Insertion Sort is another simple sorting algorithm that can be useful in certain scenarios, especially when dealing with small datasets
+or when elements are continuously added to an already partially sorted list. Its time complexity is O(n^2) in the worst and average cases, but it has a best-case time complexity of O(n) when the input is nearly sorted, making it more efficient in such situations compared to other quadratic sorting algorithms like Bubble Sort.
+
+Applications:
+
+Small Datasets:
+Insertion Sort can be effective for sorting small datasets, especially when the number of elements is relatively small. Its simple implementation and efficiency for small lists can make it a good choice when dealing with limited data.
+
+Online Sorting:
+In scenarios where elements are continuously being added to a sorted list, like in real-time data streams, Insertion Sort can be advantageous. Its ability to efficiently place new elements in their correct positions within an already sorted list makes it suitable for online sorting.
+
+Nearly Sorted Data:
+As mentioned earlier, when dealing with data that is already partially sorted, Insertion Sort's best-case time complexity of O(n) becomes beneficial, resulting in faster sorting compared to other quadratic algorithms.
+
+Efficient for Small Inputs:
+For extremely small arrays or lists, the constant factors associated with more complex sorting algorithms
+can make them slower than Insertion Sort. Therefore, in cases where the dataset is very tiny, Insertion Sort can be a practical choice.
+
+arr = [4,33,2,15,1]
+smallest = arr[0]
+for i in range(0,len(arr)):
+    for j in range(i+1,len(arr)):
+        if arr[j] > arr[i]:
+            smallest = arr[j]
+            arr[j] = arr[i]
+            arr[i] = smallest
+    
+print(arr)
