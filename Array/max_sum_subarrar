@@ -1,0 +1,19 @@
+Given an array find the maximum sum subarray. Return the maximum sum of the subarray.
+Input:-
+[5,2,-4,-5, 3,-1,2,3,1]
+
+Output:-
+8
+def find_maximum_subarray(arr, length):
+    """write the code to find the maximum subarray sum
+    only return the maximum sum of the subarray . 
+    Both array and size of array is given """
+    maxi=arr[0]
+    for i in range(len(arr)):
+        s=0
+        for j in range(i,len(arr)):
+            s=s+arr[j]
+            maxi=max(maxi,s)
+    return maxi
+    
+    
