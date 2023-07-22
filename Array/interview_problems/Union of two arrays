@@ -1,0 +1,9 @@
+
+
+ def doUnion(self,a,n,b,m):
+        
+        
+        #code here
+        combined = set(a + b)
+        res = list(combined)
+        return len(res)
