@@ -1,0 +1,125 @@
+You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
+You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
+
+
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        n = len(matrix)
+        for i in range(n):
+            for j in range(i,n):
+                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+        for i in range(n):
+            matrix[i] = matrix[i][::-1]
+
+
+def rotate(matrix):: This line defines the function rotate that takes a 2D matrix matrix as input.
+
+n = len(matrix): We find the size of the matrix (number of rows or columns) and store it in the variable n. In our example, n will be 3 since it's a 3x3 matrix.
+
+for i in range(n):: This initiates the first loop that iterates over the rows of the matrix.
+
+for j in range(i, n):: This initiates the second loop that iterates over the columns, but it starts from the current row index i to the end of the matrix n.
+
+matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]: This line performs the transpose operation by swapping the elements at positions (i, j) and (j, i). 
+This effectively rotates the elements along the main diagonal. For our example, after this line, the matrix becomes:
+
+Let's consider the first iteration of the outer loop (for i in range(n)), where i = 0.
+
+Now, we enter the second loop (for j in range(i, n)), where j will iterate from 0 to 2, since i = 0 and n = 3.
+
+The first element to swap will be matrix[0][0] and matrix[0][0]. However, since both indices are the same, this swap is essentially a no-op, and the elements remain unchanged.
+
+Next, we swap matrix[0][1] and matrix[1][0]. So, matrix[0][1] gets the value 4 and matrix[1][0] gets the value 2. After this swap, the matrix becomes:
+
+python
+Copy code
+matrix = [
+    [1, 4, 3],
+    [2, 5, 6],
+    [7, 8, 9]
+]
+Now, we swap matrix[0][2] and matrix[2][0]. So, matrix[0][2] gets the value 7 and matrix[2][0] gets the value 3. After this swap, the matrix becomes:
+python
+Copy code
+matrix = [
+    [1, 4, 7],
+    [2, 5, 6],
+    [3, 8, 9]
+]
+We continue with the second iteration of the outer loop (for i in range(n)), where i = 1.
+
+Now, we enter the second loop (for j in range(i, n)), where j will iterate from 1 to 2, since i = 1 and n = 3.
+
+The first element to swap will be matrix[1][1] and matrix[1][1]. Again, since both indices are the same, this swap is a no-op, and the elements remain unchanged.
+
+Next, we swap matrix[1][2] and matrix[2][1]. So, matrix[1][2] gets the value 8 and matrix[2][1] gets the value 6. After this swap, the matrix becomes:
+
+python
+Copy code
+matrix = [
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9]
+]
+Finally, the loop continues with the third iteration of the outer loop (for i in range(n)), where i = 2. Since i = 2, the inner loop will not execute, as j will not be greater than or equal to n (which is 3).
+
+At this point, the transpose operation is complete, and the matrix has been transposed along the main diagonal.
+
+The transposed matrix is:
+
+python
+Copy code
+[
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9]
+]
+Now, we move on to the next step, 
+which is to reverse each row to achieve the 90-degree clockwise rotation.
+Now, we swap matrix[0][2] and matrix[2][0]. So, matrix[0][2] gets the value 7 and matrix[2][0] gets the value 3. After this swap, the matrix becomes:
+python
+Copy code
+matrix = [
+    [1, 4, 7],
+    [2, 5, 6],
+    [3, 8, 9]
+]
+We continue with the second iteration of the outer loop (for i in range(n)), where i = 1.
+
+Now, we enter the second loop (for j in range(i, n)), where j will iterate from 1 to 2, since i = 1 and n = 3.
+
+The first element to swap will be matrix[1][1] and matrix[1][1]. Again, since both indices are the same, this swap is a no-op, and the elements remain unchanged.
+
+Next, we swap matrix[1][2] and matrix[2][1]. So, matrix[1][2] gets the value 8 and matrix[2][1] gets the value 6. After this swap, the matrix becomes:
+
+python
+Copy code
+matrix = [
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9]
+]
+Finally, the loop continues with the third iteration of the outer loop (for i in range(n)), where i = 2. Since i = 2, the inner loop will not execute, as j will not be greater than or equal to n (which is 3).
+
+At this point, the transpose operation is complete, and the matrix has been transposed along the main diagonal.
+
+The transposed matrix is:
+
+python
+Copy code
+[
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9]
+]
+Now, we move on to the next step, which is to reverse each row to achieve the 90-degree clockwise rotation.
+
+
+
+
+
+
+Regenerate response
