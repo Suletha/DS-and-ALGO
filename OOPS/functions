@@ -1,0 +1,31 @@
+A class named 'Student' with String variable 'name' and integer variable 'roll_no' and Constructor is already created.
+
+Create a method display to print the attributes name and roll_no.
+
+class Student:
+    def __init__(self,name="john",roll_no=2):
+        self.name=name
+        self.roll_no=roll_no
+        
+    
+    #Create the method display below
+    def display(self):
+        print(self.name)
+        print(self.roll_no)
+        
+
+
+
+
+#Do not touch the Main method
+def main():
+    x=Student("vaibhav",101)
+    
+    y=Student("rahul",102)
+
+    obj=Student()
+    x.display()
+    y.display()
+    obj.display()
+
+main()
