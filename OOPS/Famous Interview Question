@@ -1,0 +1,27 @@
+Write a program to create a class count_objects and calculate the number of objects that has been created in realtime.
+
+class count_objects:
+    i = 0
+    def __init__(self): 
+        
+        count_objects.i +=1
+    
+        
+   
+    
+    #Write the code here
+
+
+#Do Not change the Below code Method
+
+
+def main():
+    a = count_objects()
+    b = count_objects()
+    c = count_objects()
+    print(count_objects.i)
+    d = count_objects()
+    print(count_objects.i)
+    e = count_objects()
+    print(count_objects.i)
+main()
