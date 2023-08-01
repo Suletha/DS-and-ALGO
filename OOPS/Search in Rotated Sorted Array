@@ -1,0 +1,86 @@
+There is an integer array nums sorted in ascending order (with distinct values).
+
+Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed). For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].
+
+Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
+
+You must write an algorithm with O(log n) runtime complexity.
+
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        n = len(nums)-1
+        l, r = 0, n
+        while l <= r:
+            mid = (l + r)//2
+            if nums[mid] == target:
+                return mid
+            
+            if nums[l] <= nums[mid]:
+                if nums[l] <= target < nums[mid]:
+                
+                    r = mid - 1
+                else:
+                    l = mid + 1
+            else:
+                if nums[mid] < target <= nums[r]:
+                    l = mid + 1
+                else:
+                    r = mid - 1
+        return -1
+
+
+Sure! Let's go through the search function line by line to understand its logic:
+
+python
+Copy code
+def search(nums, target):
+    left, right = 0, len(nums) - 1
+The function search takes two arguments: nums, the rotated sorted array, and target, the value we want to find in the array.
+left and right are variables representing the current left and right boundaries of the search space. Initially, left is set to 0 (the index of the first element in the array), and right is set to len(nums) - 1 (the index of the last element in the array).
+python
+Copy code
+    while left <= right:
+This starts a while loop that continues until the left pointer is less than or equal to the right pointer. If left becomes greater than right, it means the search space is empty, and we have checked all possible positions for the target without finding it, so we exit the loop.
+python
+Copy code
+        mid = left + (right - left) // 2
+In each iteration of the loop, we calculate the middle index mid of the current search space. The formula (left + (right - left) // 2) ensures that mid is always floored to the nearest integer to avoid any precision errors when dividing.
+python
+Copy code
+        if nums[mid] == target:
+            return mid
+We check if the value at the middle index (nums[mid]) is equal to the target value. If it is, we have found the target value, and we return the index mid.
+python
+Copy code
+        if nums[left] <= nums[mid]:
+This condition checks if the left half of the current search space is sorted. If the value at the left pointer (nums[left]) is less than or equal to the value at the middle index (nums[mid]), it means the left half is sorted.
+python
+Copy code
+            if nums[left] <= target < nums[mid]:
+                right = mid - 1
+            else:
+                left = mid + 1
+If the target lies within the range of values from nums[left] to nums[mid], it means the target lies in the sorted left half. In this case, we adjust the right pointer to be mid - 1, restricting the search space to the left half.
+If the target does not lie within the range of values from nums[left] to nums[mid], it means the target lies in the right half (because the left half is sorted and the target is not in it). In this case, we adjust the left pointer to be mid + 1, restricting the search space to the right half.
+python
+Copy code
+        else:
+If the left half is not sorted, it means the right half must be sorted.
+python
+Copy code
+            if nums[mid] < target <= nums[right]:
+                left = mid + 1
+            else:
+                right = mid - 1
+If the target lies within the range of values from nums[mid] to nums[right], it means the target lies in the sorted right half. In this case, we adjust the left pointer to be mid + 1, restricting the search space to the right half.
+If the target does not lie within the range of values from nums[mid] to nums[right], it means the target lies in the left half (because the right half is sorted and the target is not in it). In this case, we adjust the right pointer to be mid - 1, restricting the search space to the left half.
+python
+Copy code
+    return -1
+If the while loop completes without finding the target, it means the target is not in the nums array, so we return -1 to indicate that the target is not found in the array.
+The search function efficiently searches for the target value in the rotated sorted array by reducing the search space by half in each iteration, resulting in O(log n) runtime complexity.
+        
