@@ -1,12 +1,52 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        d={}
-        for i in range(0,len(nums)):
-            value=nums[i]
-            diff=target-value
-            if value not in d:
-                d[diff]=i
-            else:
-                cur_inx=i
-                pre_inx=d[value]
-                return [pre_inx,cur_inx]
+        d = {}
+        for i, value in enumerate(nums):
+            diff = target - value
+            if diff in d:
+                return [d[diff], i]
+            d[value] = i
+
+
+Loop starts with i = 0, and the value is 2.
+
+diff = 9 - 2 = 7.
+Since 7 is not present in the dictionary d, it adds 2 as a key with the value 0 in the dictionary. The dictionary d becomes {2: 0}.
+Loop continues with i = 1, and the value is 7.
+
+diff = 9 - 7 = 2.
+Since 2 is already present in the dictionary d, it means the pair [2, 7] forms the target. The function returns [d[2], 1], which is [0, 1].
+The function returns [0, 1], indicating that nums[0] + nums[1] = 2 + 7 = 9, which matches the target value.
+
+In this example, the function finds the pair [2, 7] whose sum equals the target 9, and it returns the corresponding indices [0, 1]. The function effectively finds the two distinct elements in the array whose sum is equal to the target, without using the same element twice.
+
+
+
+
+User
+explain enumerate with example
+ChatGPT
+Certainly! enumerate() is a built-in Python function that adds a counter to an iterable and returns an enumerate object, which yields pairs of elements along with their corresponding indices. The function is often used in loops to get both the index and the element from a sequence (e.g., list, tuple, string) being iterated. The syntax for enumerate() is as follows:
+
+python
+Copy code
+enumerate(iterable, start=0)
+iterable: The sequence to be enumerated (e.g., list, tuple, string, etc.).
+start: An optional parameter specifying the index to start from (default is 0).
+Here's an example to illustrate how enumerate() works:
+
+Example:
+
+python
+Copy code
+fruits = ['apple', 'banana', 'cherry']
+
+for index, fruit in enumerate(fruits):
+    print(f"Index: {index}, Fruit: {fruit}")
+Output:
+
+yaml
+Copy code
+Index: 0, Fruit: apple
+Index: 1, Fruit: banana
+Index: 2, Fruit: cherry
