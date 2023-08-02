@@ -1,0 +1,40 @@
+You are maintaining a register of students roll numbers which is a array the roll numbers can be in sorted or unsorted manner .
+The task is to arrange all the roll numbers in ascending order , Find the number of changes required to do so
+that number should be minimum
+
+Example 1:
+Input:
+ nums = {2, 8, 5, 4}
+Output: 1
+
+Explanation: swap 8 with 4.
+
+
+Input:
+ nums = {10, 19, 6, 3, 5}
+Output: 2
+
+Explanation: swap 10 with 3 and swap 19 with 5.
+
+Input:
+ nums = {10, 19, 6, 5, 3}
+Output: 3
+
+class Solution:
+    def total_swaps(self, arr: List[int]) -> int:
+        n = len(arr)
+    # Create a list of tuples containing the roll numbers and their original indices
+        roll_tuples = [(arr[i], i) for i in range(n)]
+    # Sort the list based on the roll numbers
+        roll_tuples.sort()
+    
+    # Count the number of swaps required to arrange the numbers in ascending order
+        swaps = 0
+        for i in range(n):
+            while i != roll_tuples[i][1]:
+            # Swap the current element with the element at its correct position
+                roll_tuples[roll_tuples[i][1]], roll_tuples[i] = roll_tuples[i], roll_tuples[roll_tuples[i][1]]
+                swaps += 1
+
+        return swaps
+
