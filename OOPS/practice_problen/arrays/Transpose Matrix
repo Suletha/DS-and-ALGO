@@ -1,0 +1,34 @@
+Given a 2D integer array matrix, return the transpose of matrix.
+
+The transpose of a matrix is the matrix flipped over its main diagonal, switching the matrix's row and column indices.
+class Solution:
+    def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
+        rows = len(matrix)
+        col = len(matrix[0])
+        trans_mat = [[matrix[i][j] for i in range(rows)] for j in range (col)]
+        return trans_mat
+
+Step 1: Initialize variables
+
+rows = len(matrix): rows will be set to 3, as there are three rows in the matrix.
+cols = len(matrix[0]): cols will be set to 3, as there are three columns in the matrix.
+Step 2: Create the transposed_matrix
+Using list comprehension, we will create the transposed_matrix as follows:
+
+python
+Copy code
+transposed_matrix = [[matrix[i][j] for i in range(rows)] for j in range(cols)]
+Let's go through the loop for each value of j (0, 1, and 2):
+
+When j = 0, matrix[0][0], matrix[1][0], matrix[2][0] will be selected, and the first column of matrix will be assigned to the first row of transposed_matrix.
+
+transposed_matrix[0] = [matrix[0][0], matrix[1][0], matrix[2][0]] = [1, 4, 7]
+
+When j = 1, matrix[0][1], matrix[1][1], matrix[2][1] will be selected, and the second column of matrix will be assigned to the second row of transposed_matrix.
+
+transposed_matrix[1] = [matrix[0][1], matrix[1][1], matrix[2][1]] = [2, 5, 8]
+
+When j = 2, matrix[0][2], matrix[1][2], matrix[2][2] will be selected, and the third column of matrix will be assigned to the third row of transposed_matrix.
+
+transposed_matrix[2] = [matrix[0][2], matrix[1][2], matrix[2][2]] = [3, 6, 9]
+
