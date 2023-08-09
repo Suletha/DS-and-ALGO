@@ -1,0 +1,22 @@
+
+        n1 = len(A)
+        n2 = len(B)
+        n3 = len(C)
+        common_elements = []
+        i = j = k = 0
+
+        while i < n1 and j < n2 and k < n3:
+            if A[i] == B[j] and  B[j] == C[k]:
+                common_elements.append(A[i])
+                i += 1
+                j += 1
+                k += 1 
+            
+            elif A[i] > B[j]: #and A[i] <= C[k]:
+                j += 1
+            elif B[j] > C[k]: #and B[j] <= C[k]:
+                k += 1
+            else:
+                i += 1
+
+        return common_elements
