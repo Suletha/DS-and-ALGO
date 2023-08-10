@@ -18,3 +18,47 @@ def findSubArrays(self,arr,n):
 
 2)
 
+
+# Python program for printing the subarrays whose sum is zero using hashing
+def ZeroSubarraySum(nums,N):
+    # A hashtable is created which is used to store current subarray sum
+    hashtable = {}
+    # to store the starting and ending indices store the indices in the ans array 
+    ans = []
+    # helps in computing the sum of elements 
+    currentsum = 0
+    for i in range(N):
+        # add the value of nums[i] to the current sum
+        currentsum += nums[i]
+        # if the current sum is zero then it means that there is a zero subarray sum with starting index as 0 and ending index as the current index.
+        if currentsum  == 0:
+            # append the values of indices into the ans array
+            ans.append((0, i))
+        
+        ans1 = []
+         
+        # If sum already exists in the hashtable then there exists at-least one subarray which is ending at index i with zero subarray sum
+        if currentsum in hashtable:
+            # this helps in storing the indices
+            ans1 = hashtable.get(currentsum)
+            for k in range(len(ans1)):
+                ans.append((ans1[k] + 1, i))
+        ans1.append(i)
+        hashtable[currentsum] = ans1
+    return ans
+ 
+# Driver Code
+if __name__ == '__main__':
+    # Input the integer array
+    nums = [0, -1, 8, -5, -3, -7, 4, 2, 1]
+    # Call the function which prints the zero subarray sum
+    ans = ZeroSubarraySum(nums, len(nums))
+    # if there is no subarray whose sum is zero return not present
+    if (len(ans) == 0):
+        print ("No subarray with zero-sum is present")
+    # else print the subarrays whose sum is zero
+    else:
+        for i in ans:
+            print ("Zero sum subarray is from " + str(i[0]) + " to " + str(i[1]))
+
+
