@@ -1,0 +1,20 @@
+You are given an array arr[] of size n. Find the total count of sub-arrays having their sum equal to 0
+
+1)Brute Force Approach:
+def findSubArrays(self,arr,n):
+        #prefix_sum = {}  # To store prefix sums and their frequencies
+        count = 0
+        n = len(arr)
+        for i in range(0,n):
+            sub_sum = 0
+            for j in range(i,n):
+                sub_sum += arr[j]
+                
+                if sub_sum == 0:
+                    count +=1
+        return count
+        
+        #return: count of sub-arrays having their sum equal to 0
+
+2)
+
