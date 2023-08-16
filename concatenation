@@ -1,0 +1,116 @@
+You are playing a puzzle game , where you have to create a Number by appending 2 parts of that number array.
+
+You have given a array of integers and a number X .
+
+you have to create X by appending 2 integers in the array next to each other .
+
+You have to return how many ways is possible to make X by the array elements
+
+
+
+Example 1:
+
+Input:
+
+N = 4
+
+numbers[] = {1, 212, 12, 12}
+
+X = 1212
+
+Output: 3
+
+Explanation: We can obtain X=1212 by concatenating:
+
+numbers[0] = 1 with numbers[1] = 212
+
+numbers[2] = 12 with numbers[3] = 12
+
+numbers[3] = 12 with numbers[2] = 12
+
+
+
+Example 2:
+
+Input: 
+
+N = 3
+
+numbers[] = {11, 11, 110}
+
+X = 11011
+
+Output: 2
+
+Explanation: We can obtain X=11011 by concatenating:
+
+numbers[2] = 110 with numbers[0] = 11
+
+numbers[2] = 110 with numbers[1] = 11
+
+
+
+Constraints:
+
+1 ≤ N ≤ 5*10^4 
+
+1 ≤ numbers[] ≤ 10^9
+
+1 ≤ X ≤ 10^9
+
+
+
+def countConcatenations(numbers, X):
+    num_set = set(numbers)
+    count = 0
+    
+    for i in range(len(numbers)):
+        for j in range(len(numbers)):
+            if i != j:
+                concatenated = int(str(numbers[i]) + str(numbers[j]))
+                if concatenated == X:
+                    count += 1
+    
+    return count // 2  # Divide by 2 to avoid double counting
+    
+# Test cases
+numbers1 = [1, 212, 12, 12]
+X1 = 1212
+print(countConcatenations(numbers1, X1))  # Output: 3
+
+numbers2 = [11, 11, 110]
+X2 = 11011
+print(countConcatenations(numbers2, X2))  # Output: 2
+
+
+We start by creating a hash set num_set containing the unique numbers from the array: {1, 212, 12}.
+
+We then iterate through all possible pairs of numbers in the array (i, j):
+
+a. i = 0, j = 1: Concatenating numbers[0] (1) and numbers[1] (212) gives us 1212, which is equal to X. So, we increment the count by 1.
+
+b. i = 0, j = 2: Concatenating numbers[0] (1) and numbers[2] (12) gives us 112, which is not equal to X.
+
+c. i = 0, j = 3: Concatenating numbers[0] (1) and numbers[3] (12) gives us 112, which is not equal to X.
+
+d. i = 1, j = 0: Concatenating numbers[1] (212) and numbers[0] (1) gives us 2121, which is not equal to X.
+
+e. i = 1, j = 2: Concatenating numbers[1] (212) and numbers[2] (12) gives us 21212, which is not equal to X.
+
+f. i = 1, j = 3: Concatenating numbers[1] (212) and numbers[3] (12) gives us 21212, which is not equal to X.
+
+g. i = 2, j = 0: Concatenating numbers[2] (12) and numbers[0] (1) gives us 121, which is not equal to X.
+
+h. i = 2, j = 1: Concatenating numbers[2] (12) and numbers[1] (212) gives us 12212, which is not equal to X.
+
+i. i = 2, j = 3: Concatenating numbers[2] (12) and numbers[3] (12) gives us 1212, which is equal to X. So, we increment the count by 1.
+
+j. i = 3, j = 0: Concatenating numbers[3] (12) and numbers[0] (1) gives us 121, which is not equal to X.
+
+k. i = 3, j = 1: Concatenating numbers[3] (12) and numbers[1] (212) gives us 12212, which is not equal to X.
+
+l. i = 3, j = 2: Concatenating numbers[3] (12) and numbers[2] (12) gives us 1212, which is equal to X. So, we increment the count by 1.
+
+The total count after iterating through the pairs is 3, which is the correct output.
+
+Remember that the function divides the final count by 2 to avoid double counting. This is because, in the iteration process, if we find numbers[i] concatenated with numbers[j] as equal to X, we also count numbers[j] concatenated with numbers[i] as equal to X. So, we divide the final count by 2 to get the accurate number of ways to create X using the array elements.
