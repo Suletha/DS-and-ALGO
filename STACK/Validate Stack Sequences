@@ -24,7 +24,8 @@ class Solution:
         stack = []
         for n in pushed:
             stack.append(n)
-            while i and stack < len(popped)  and popped[i] == stack[-1]:
+            while i < len(popped) and stack and popped[i] == stack[-1]:
                 stack.pop()
                 i +=1
-        return i == len(popped)
+        return not stack
+        
