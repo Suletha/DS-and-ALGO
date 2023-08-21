@@ -48,4 +48,34 @@ n = len(nums)
 
         return nge
 
+
+Initially, n = 5 (length of nums), and stack and result are empty and [-1, -1, -1, -1, -1] respectively.
+
+Loop begins: i ranges from 0 to 2 * n - 1 = 9.
+
+i = 0:
+
+stack is empty.
+The condition while stack and nums[stack[-1]] < nums[i % n] is not met, so we proceed to stack.append(i % n), which adds 0 to the stack.
+i = 1:
+
+stack contains [0].
+The condition while stack and nums[stack[-1]] < nums[i % n] is not met, so we proceed to stack.append(i % n), which adds 1 to the stack.
+... and so on for all values of i.
+
+i = 4:
+stack contains [0, 1, 2, 3].
+The condition while stack and nums[stack[-1]] < nums[i % n] is met for index 3 (value 4 in nums) and index 2 (value 3 in nums). Since 4 is greater than 3, it means that 4 is the next greater element for both elements.
+The line result[stack.pop()] = nums[i % n] updates result[3] = 4 and result[2] = 4, effectively marking that the next greater element for indices 3 and 2 is 4.
+... and so on for the remaining values of i.
+
+After the loop ends, stack contains [0, 1, 2, 4], and result is [2, 3, 4, -1, 4], which represents the next greater elements for each element in the nums list.
+
+In summary, the code iterates through each index i (circularly) in nums, while maintaining a stack of indices in descending order of the corresponding values. When a larger value is encountered, the loop processes the indices in the stack and marks them with the current value. This way, the resulting result list contains the next greater elements for each element in the nums list.
+
+
+
+
+
+
     
