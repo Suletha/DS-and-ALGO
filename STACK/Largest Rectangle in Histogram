@@ -24,3 +24,12 @@ class Solution:
         for i, h in stack:
             max_area = max(max_area, h*(len(heights)-i))
         return max_area
+
+
+Initialize stack ‘S’ and push the top index of A[] onto ‘S’
+Traverse via A[] and compare the height of each element with the height of each element on top of ‘S’
+If A[i]>= A[S.top()], then push it into the S
+Else A[i] <= A[S.top()], then pop the elements until A[i]>= A[S.top()]
+This ensures that A[S.top()] stays at its maximum height as elements are being added to it from above and below
+Lastly, push i for every item currently on S into the stack, followed by popping from S until S has no elements left in it.
+Return maximum element
