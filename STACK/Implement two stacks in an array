@@ -1,0 +1,161 @@
+Your task is to implement  2 stacks in one array efficiently. You need to implement 4 methods.
+push1 : pushes element into first stack.
+push2 : pushes element into second stack.
+pop1 : pops element from first stack and returns the popped element. If first stack is empty, it should return -1.
+pop2 : pops element from second stack and returns the popped element. If second stack is empty, it should return -1.
+
+
+
+class TwoStacks:
+    def __init__(self, n=100):
+        self.size = n
+        self.arr = [0] * n
+        self.top1 = -1
+        self.top2 = n
+
+    # Function to push an integer into stack 1
+    def push1(self, x):
+        if self.top1 < self.top2 - 1:
+            self.top1 += 1
+            self.arr[self.top1] = x
+        else:
+            print("Stack Overflow")
+            
+     
+
+    # Function to push an integer into stack 2
+    def push2(self, x):
+        if self.top1 < self.top2 - 1:
+            self.top2 -= 1
+            self.arr[self.top2] = x
+        else:
+            print("Stack Overflow")
+        
+
+    # Function to remove an element from top of stack 1
+    def pop1(self):
+        if self.top1 >= 0:
+           popped_ele = self.arr[self.top1]
+           self.top1 -= 1
+           return popped_ele 
+        else:
+            return -1
+
+    # Function to remove an element from top of stack 2
+    def pop2(self):
+        if self.top2 < self.size:
+           popped_ele = self.arr[self.top2]
+           self.top2 += 1
+           return popped_ele 
+        else:
+             return -1
+       
+
+
+class TwoStacks:
+    def __init__(self, n=100):
+        self.size = n
+        self.arr = [0] * n
+        self.top1 = -1
+        self.top2 = n
+
+    # Function to push an integer into stack 1
+    def push1(self, x):
+        if self.top1 < self.top2 - 1:
+            self.top1 += 1
+            self.arr[self.top1] = x
+        else:
+            print("Stack Overflow")
+            
+     
+
+    # Function to push an integer into stack 2
+    def push2(self, x):
+        if self.top1 < self.top2 - 1:
+            self.top2 -= 1
+            self.arr[self.top2] = x
+        else:
+            print("Stack Overflow")
+        
+
+    # Function to remove an element from top of stack 1
+    def pop1(self):
+        if self.top1 >= 0:
+           popped_ele = self.arr[self.top1]
+           self.top1 -= 1
+           return popped_ele 
+        else:
+            return -1
+
+    # Function to remove an element from top of stack 2
+    def pop2(self):
+        if self.top2 < self.size:
+           popped_ele = self.arr[self.top2]
+           self.top2 += 1
+           return popped_ele 
+        else:
+             return -1
+
+
+
+class TwoStacks:
+    def __init__(self, n=100):
+        self.size = n
+        self.arr = [0] * n
+        self.top1 = -1
+        self.top2 = n
+
+    # Function to push an integer into stack 1
+    def push1(self, x):
+        if self.top1 < self.top2 - 1:
+            self.top1 += 1
+            self.arr[self.top1] = x
+        else:
+            print("Stack Overflow")
+            
+     
+
+    # Function to push an integer into stack 2
+    def push2(self, x):
+        if self.top1 < self.top2 - 1:
+            self.top2 -= 1
+            self.arr[self.top2] = x
+        else:
+            print("Stack Overflow")
+        
+
+    # Function to remove an element from top of stack 1
+    def pop1(self):
+        if self.top1 >= 0:
+           popped_ele = self.arr[self.top1]
+           self.top1 -= 1
+           return popped_ele 
+        else:
+            return -1
+
+    # Function to remove an element from top of stack 2
+    def pop2(self):
+        if self.top2 < self.size:
+           popped_ele = self.arr[self.top2]
+           self.top2 += 1
+           return popped_ele 
+        else:
+             return -1
+       
+
+# Example usage
+stacks = TwoStacks(6)
+
+stacks.push1(1)
+stacks.push1(2)
+stacks.push2(11)
+stacks.push2(12)
+stacks.push2(13)
+
+print(stacks.pop1())  # Output: 2
+print(stacks.pop2())  # Output: 13
+print(stacks.pop2())  # Output: 12
+print(stacks.pop1())  # Output: 1
+print(stacks.pop1())  # Output: -1 (stack1 is empty)
+       
+
