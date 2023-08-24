@@ -1,0 +1,45 @@
+Given string S representing a postfix expression, the task is to evaluate the expression and find
+the final value. Operators will only include the basic arithmetic operators like *, /, + and -.
+
+
+from collections import deque
+ 
+
+class Solution:
+    
+    #Function to evaluate a postfix expression.
+    def evaluatePostfix(self, S):
+        if not S:
+            exit(-1)
+              
+ 
+    # create an empty stack
+        stack = deque()
+        #stack = []
+
+        for char in S:
+            if char.isdigit():
+                
+                stack.append(int(char))
+            else:
+                
+                x = stack.pop()
+                y = stack.pop()
+
+            if char == '+':
+                stack.append(y + x)
+            elif char == '-':
+                stack.append(y - x)
+            elif char == '*':
+                stack.append(y * x)
+            elif char == '/':
+                stack.append(y // x)
+                # If you want integer division in Python 3, use // instead of /
+
+                
+
+        return stack.pop()
+
+
+Iterate the expression from left to right and keep on storing the operands into a stack. Once an operator is received, 
+pop the two topmost elements and evaluate them and push the result in the stack again.
