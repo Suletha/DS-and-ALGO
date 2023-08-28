@@ -29,3 +29,22 @@ class Solution:
 
         return numbers
 
+
+Initialize an empty list numbers to store the extracted numbers.
+Initialize an empty string current_number to build the current number being extracted.
+The for loop iterates through each character in the input string "abv345fjjf123tyir45jf6th":
+
+For the first character 'a', which is not a digit, the current_number remains empty.
+For the second character 'b', also not a digit, the current_number is still empty.
+For the third character 'v', again not a digit, the current_number is still empty.
+For the fourth character '3', which is a digit, it is appended to the current_number, making it "3".
+For the fifth character '4', also a digit, it's appended to the current_number, making it "34".
+For the sixth character '5', another digit, it's appended to the current_number, making it "345".
+The next characters are not digits, so the current_number is complete and is added to the numbers list as an integer. The current_number is reset to an empty string.
+The process continues similarly, and when '1' is encountered, it's added to the current_number, making it "1".
+'2' and '3' are added subsequently, making the current_number "123", which is added to the numbers list.
+The pattern continues for the remaining characters, forming numbers "45" and "6" and appending them to the numbers list.
+Finally, after iterating through the entire input string, the current_number is checked again. If it's not empty, which would happen if the last character of the string was a digit, it is added to the numbers list.
+
+The code returns the numbers list, which contains the extracted numbers: [345, 123, 45, 6]. This list represents the sequences of consecutive digits that were found in the input string.
+
