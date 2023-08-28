@@ -1,0 +1,33 @@
+class Solution:
+    # Function to find starting point where the truck can start to get through
+    # the complete circle without exhausting its petrol in between.
+    def tour(self, lis, n):
+        start = 0  # Potential starting point
+        total_petrol = 0  # Total petrol in the truck
+        current_petrol = 0  # Current petrol at the current pump
+        
+        for i in range(n):
+            total_petrol += lis[i][0] - lis[i][1]  # Collect the net petrol
+            current_petrol += lis[i][0] - lis[i][1]  # Update current petrol
+            
+            # If current petrol becomes negative, reset starting point
+            if current_petrol < 0:
+                start = i + 1
+                current_petrol = 0
+        
+        # If the total collected petrol is negative, it's impossible to complete the circle
+        if total_petrol < 0:
+            return -1
+        else:
+            return start
+
+# Example usage
+lis = [[4, 6], [6, 5], [7, 3], [4, 5]]
+n = len(lis)
+sol = Solution()
+start_point = sol.tour(lis, n)
+if start_point == -1:
+    print("It's not possible to complete the circle.")
+else:
+    print("Start point:", start_point)
+To solve this problem, you can iterate through the given petrol pumps and simulate the journey while keeping track of the current petrol and the total distance covered. If at any point the current petrol becomes negative, you know that the starting point cannot be the current pump. In that case, you need to start over from the next petrol pump as the potential starting point. This is because if you started from the current pump, you wouldn't have enough petrol to reach the subsequent pump, so any station before the current one can't be a valid starting point.
