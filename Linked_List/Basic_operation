@@ -1,0 +1,83 @@
+class Node:
+    def __init__(self,a):
+        self.value = a
+        self.next = None
+        
+    def insert_start(head,value):
+        new_node = Node(value)
+        new_node.next = head
+        return new_node
+        
+    def insert_end(head,value):
+        new_node = Node(value)
+        temp = head
+        while temp.next != None:
+            temp = temp.next
+        temp.next = new_node
+        
+
+        
+    def insert_middle(head,n,value):    
+        
+        new_node = Node(value)
+        temp = head
+        position = 1  # Starting from the first position
+    
+        while temp is not None and position < n:
+            temp = temp.next
+            position += 1
+    
+        if temp is None:
+            print("Position out of range")
+            return
+    
+        new_node.next = temp.next
+        temp.next = new_node
+           
+    
+    def display(head):
+        temp = head
+        while temp != None:
+            print(temp.value)
+            temp = temp.next
+            
+            
+            
+head = Node(7)
+#head = Node(8)
+#head = Node(9)
+
+head = Node.insert_start(head,10)
+head = Node.insert_start(head,20)
+
+
+Node.insert_end(head,30)
+Node.insert_end(head,40)
+
+Node.insert_middle(head,3,50)
+#Node.insert_middle(head,60)
+#head = head.next
+#head = head.next
+
+Node.display(head)
+
+        
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
