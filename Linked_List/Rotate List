@@ -1,0 +1,41 @@
+Given the head of a linked list, rotate the list to the right by k places.
+
+Input: head = [1,2,3,4,5], k = 2
+Output: [4,5,1,2,3]
+
+
+class Solution:
+    def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        if not head or k == 0:
+            return head
+
+    # Count the length of the linked list
+        length = 1
+        current = head
+        while current.next:
+            length += 1
+            current = current.next
+    
+    # Determine the new head position
+        new_head_index = length - (k % length)
+    
+        if new_head_index == length:
+            return head
+    
+    # Traverse to the node just before the new head
+        current = head
+        for _ in range(new_head_index - 1):
+            current = current.next
+    
+    # Update pointers to reorganize the list
+        new_head = current.next
+        current.next = None
+        current = new_head
+    
+        while current.next:
+            current = current.next
+    
+        current.next = head
+    
+        return new_head
+        
