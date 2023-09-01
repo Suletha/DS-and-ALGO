@@ -1,0 +1,55 @@
+Given the head of a linked list, return the node where the cycle begins. If there is no cycle, return null.
+
+There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer is connected to (0-indexed). It is -1 if there is no cycle. Note that pos is not passed as a parameter.
+Input: head = [3,2,0,-4], pos = 1
+Output: tail connects to node index 1
+Explanation: There is a cycle in the linked list, where tail connects to the second node.
+
+
+
+
+Do not modify the linked list.
+class ListNode:
+    def __init__(self, val=0):
+        self.val = val
+        self.next = None
+
+def detectCycle(head):
+    # Initialize the tortoise and hare pointers
+    tortoise = hare = head
+    
+    # Phase 1: Find the meeting point
+    while hare and hare.next:
+        tortoise = tortoise.next
+        hare = hare.next.next
+        if tortoise == hare:
+            break
+    
+    # If there is no cycle, return None
+    if not hare or not hare.next:
+        return None
+    
+    # Phase 2: Find the starting node of the cycle
+    tortoise = head
+    while tortoise != hare:
+        tortoise = tortoise.next
+        hare = hare.next
+    
+    return tortoise
+
+# Example usage
+# Create a linked list with a cycle
+head = ListNode(3)
+node2 = ListNode(2)
+node0 = ListNode(0)
+node4 = ListNode(4)
+head.next = node2
+node2.next = node0
+node0.next = node4
+node4.next = node2  # This creates a cycle
+
+cycle_start = detectCycle(head)
+if cycle_start:
+    print("Cycle starts at node with value:", cycle_start.val)
+else:
+    print("No cycle detected")
