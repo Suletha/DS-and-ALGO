@@ -1,0 +1,26 @@
+Given a linked list sorted in ascending order and an integer called data, insert data in the linked list such that the list remains sorted.
+
+Example 1:
+
+Input:
+LinkedList: 25->36->47->58->69->80
+data: 19
+Output: 
+19 25 36 47 58 69 80
+Explanation:
+After inserting 19 the sorted linked list will look like the one in the output.
+
+class Solution:
+    def sortedInsert(self, head1,key):
+        # code here
+        # return head of edited linked list
+        new_node = Node(key)
+        if not head1 or head1.data > key:
+            new_node.next = head1 
+            return new_node
+        current = head1
+        while current.next and current.next.data < key:
+            current = current.next
+        new_node.next = current.next
+        current.next = new_node
+        return head1
