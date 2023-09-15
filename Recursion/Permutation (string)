@@ -1,0 +1,26 @@
+Write a recursive program to find all the permutations of a string and store it in a list or arraylist or vectors.
+
+Example:-
+
+Permutation for abc
+
+abc,acb, bac, bca, cab ,cba
+
+
+def permutation(s,start=0):
+
+       if start == len(s):
+
+           print("".join(s))
+
+           return
+
+
+
+       for i in range(start,len(s)):
+
+            strg = list(s)
+
+            strg[start],strg[i] = strg[i],strg[start]
+
+            permutation(strg,start+1)
