@@ -1,0 +1,44 @@
+Task details
+
+We have given an array of student's class number. we have to find which class has maximum number of students
+
+The majority class is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+Note both the array and size is already given.
+Example 1: 
+Input:-
+[3,2,3]
+Output:-
+3
+Explanation:- the class 3 is of 2 students which is maximum from given array
+Input:-
+[2,2,1,1,1,2,2]
+Output:-
+2
+
+def find_majority_class(class_numbers):
+    class_count = {}  # Dictionary to store the count of each class
+
+    for class_num in class_numbers:
+        if class_num in class_count:
+            class_count[class_num] += 1
+        else:
+            class_count[class_num] = 1
+
+    max_count = max(class_count.values())  # Find the maximum count
+    majority_class = None
+
+    for class_num, count in class_count.items():
+        if count == max_count:
+            majority_class = class_num
+
+    return majority_class
+
+# Example usage:
+class_numbers1 = [3, 2, 3]
+result1 = find_majority_class(class_numbers1)
+print(result1)  # Output: 3
+
+class_numbers2 = [2, 2, 1, 1, 1, 2, 2]
+result2 = find_majority_class(class_numbers2)
+print(result2)  # Output: 2
+
