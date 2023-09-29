@@ -1,0 +1,53 @@
+Task details
+
+Two strings are twin strings if 'a' of first string is equal to 'z' of second string , 'b' of first string is equal to 'y' of second string .
+
+you have given only one string out of two you have to find its twin string
+
+Example 1:
+Input:
+S = varun
+Output: ezifm
+
+Explanation: Twin string of "varun" will be "ezifm" since v->e , a->z , r->i , u->f and n->m.
+ Example 2:
+Input:
+S = akshay
+Output: zphszb
+Explanation: Twin string of "akshay" will be "zphszb" since a->z , k->p , s->h , h->s , a->z and y->b.
+
+def find_twin_string(input_string):
+    twin_string = ""
+    for char in input_string:
+        if char.isalpha():
+            # Check if the character is a letter
+            # Calculate its corresponding twin character
+            twin_char = chr(ord('a') + ord('z') - ord(char))
+            twin_string += twin_char
+        else:
+            # If the character is not a letter, simply append it to the twin string
+            twin_string += char
+    return twin_string
+
+# Example usage:
+input_string = "varun"
+twin_string = find_twin_string(input_string)
+print(twin_string)  # Output: "ezifm"
+
+
+
+To find the twin string for the given input string, you can follow these steps:
+
+Initialize an empty string to store the twin string.
+Iterate through each character in the input string.
+For each character in the input string, find its corresponding character in the twin string based on the transformation rule (e.g., 'a' maps to 'z', 'b' maps to 'y', etc.).
+Append the corresponding character to the twin string.
+Finally, return the twin string.
+
+
+
+ord(char) returns the ASCII value of the current character. For example, ord('v') returns 118.
+ord('z') - ord(char) calculates the difference between the ASCII values of 'z' and the current character. For example, ord('z') - ord('v') results in 7.
+ord('a') + (ord('z') - ord(char)) adds this difference to the ASCII value of 'a'. For example, ord('a') + 7 results in 104.
+chr(...) converts this new ASCII value back to a character. For example, chr(104) corresponds to the character 'h'.
+So, twin_char will contain the twin character for the current letter.
