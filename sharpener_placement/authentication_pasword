@@ -1,1 +1,29 @@
+def accountOfSharpener(S):
+    if len(S) < 10:
+        return 'NOT SECURE'
+    # Check if S meets all the security criteria
+    has_lowercase = False
+    has_uppercase = False
+    has_digit = False
+    has_special = False
+    
+    for i in range(len(S)):
+        if S[i].islower():
+            has_lowercase = True
+        elif S[i].isupper():
+            has_uppercase = True
+        elif S[i].isdigit():
+            has_digit = True
+        elif S[i] in {'@', '#', '%', '&', '?'}:
+            has_special = True
+            
+    
+    # Return 'SECURE' if all criteria are met, otherwise return 'NOT SECURE'
+    if has_lowercase and has_uppercase and has_digit and has_special:
+        return 'SECURE'
+    else:
+        return 'NOT SECURE'
 
+# Test cases
+print(accountOfSharpener("Passw0rd@s"))  # Output: 'SECURE'
+print(accountOfSharpener("weakpas7sword%"))  # Output: 'NOT SECURE'
