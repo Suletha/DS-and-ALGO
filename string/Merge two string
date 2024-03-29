@@ -1,0 +1,16 @@
+class Solution:
+    def merge(self, S1, S2):
+        # code here
+        merged_str = ""
+        i = 0
+        j = 0
+        
+        while i<len(S1) and j<len(S2):
+            merged_str += S1[i] + S2[j]
+            i += 1
+            j += 1
+            
+        merged_str += S1[i:]
+        merged_str += S2[j:]
+            
+        return merged_str
