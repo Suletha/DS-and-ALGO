@@ -1,0 +1,17 @@
+class Solution:
+    def minFlips(self, S):
+        # Code here
+        flip_0 = 0
+        flip_1 = 0
+        
+        for i,char in enumerate(S):
+            if (i%2 == 0 and char != '0') or (i%2 != 0 and char != '1'):
+                flip_0 += 1
+                
+        for i,char in enumerate(S):
+            if (i%2 == 0 and char != '1') or (i%2 != 0 and char != '0'):
+                flip_1 += 1
+            
+         
+        return min(flip_0,flip_1)
+        
