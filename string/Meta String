@@ -1,0 +1,17 @@
+class Solution:
+    def metaStrings(self, S1, S2):
+        # code here
+        if len(S1) != len(S2):
+            return False
+            
+        count = 0
+        diff_pos = []
+        
+        for i in range(len(S1)):
+            if S1[i] != S2[i]:
+                count += 1
+                diff_pos.append(i)
+            if count > 2:
+                return False
+        if count == 2 and S1[diff_pos[0]] == S2[diff_pos[1]] and S1[diff_pos[1]] == S2[diff_pos[0]]:
+            return True
