@@ -1,0 +1,17 @@
+class Solution:
+
+	
+	def removeDuplicates(self,str):
+	    # code here
+	    seen = set()
+	    n = len(str)
+	    res = ""
+	    
+	    if n == 0:
+	        return 0
+	    for char in str:
+	        if char not in seen:
+	            res += char
+	            seen.add(char)
+	    return res
+	    
